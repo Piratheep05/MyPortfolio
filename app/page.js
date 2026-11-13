@@ -211,7 +211,7 @@ export default function Home() {
                         alt={`${p.title} screenshot`}
                         fill
                         sizes="(max-width: 1024px) 100vw, 640px"
-                        className="object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                        className={`object-cover ${p.imgPos} transition duration-700 group-hover:scale-[1.03]`}
                       />
                     </a>
                     <div className="flex flex-col justify-center p-7 sm:p-10">
