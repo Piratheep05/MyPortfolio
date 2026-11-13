@@ -5,7 +5,7 @@ import {
   ArrowRight, ArrowUpRight, Mail, Phone, MapPin, Download, Github, Linkedin,
 } from "@/components/icons";
 import {
-  profile, stats, about, experience, featuredProjects, clientSites, gallery, skills, education,
+  profile, stats, about, experience, products, featuredProjects, clientSites, gallery, skills, education,
 } from "@/lib/data";
 
 function SectionHeading({ eyebrow, title, children }) {
@@ -192,8 +192,48 @@ export default function Home() {
         <section id="projects" className="border-t border-line py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading eyebrow="Selected work" title="Projects I'm proud of.">
-              Business systems running in production — most are internal or client-owned, so details are shared rather than source.
+              Products I lead at SixVM, plus business systems running in production — most client work is private, so details are shared rather than source.
             </SectionHeading>
+
+            {/* SixVM products */}
+            <div className="mb-16 space-y-6">
+              {products.map((p, i) => (
+                <Reveal key={p.title}>
+                  <article className="group grid overflow-hidden rounded-3xl border border-line bg-card transition hover:border-accent/50 lg:grid-cols-[1.25fr_1fr]">
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`relative block aspect-[16/9] overflow-hidden border-line lg:aspect-auto lg:min-h-[340px] ${i % 2 ? "lg:order-2 lg:border-l" : "lg:border-r"} border-b lg:border-b-0`}
+                    >
+                      <Image
+                        src={p.img}
+                        alt={`${p.title} screenshot`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 640px"
+                        className="object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                      />
+                    </a>
+                    <div className="flex flex-col justify-center p-7 sm:p-10">
+                      <p className="font-mono text-xs uppercase tracking-wider text-accent">{p.kind}</p>
+                      <h3 className="mt-2 text-3xl font-semibold tracking-tight">{p.title}</h3>
+                      <p className="mt-4 leading-relaxed text-muted">{p.description}</p>
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {p.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+                      </div>
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[var(--fg)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition hover:opacity-85"
+                      >
+                        Visit live site <ArrowUpRight width={15} height={15} />
+                      </a>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
 
             <div className="grid gap-5 md:grid-cols-2">
               {featuredProjects.map((p, i) => (
