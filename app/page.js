@@ -279,15 +279,15 @@ export default function Home() {
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {gallery.map((g, i) => (
-                <Reveal key={g.title} delay={(i % 4) * 60}>
-                  <figure className="group overflow-hidden rounded-xl border border-line bg-card">
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                <Reveal key={g.title} delay={(i % 4) * 60} className={g.wide ? "sm:col-span-2 lg:row-span-2" : ""}>
+                  <figure className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-card">
+                    <div className={`relative overflow-hidden ${g.wide ? "aspect-[16/10] lg:aspect-auto lg:flex-1" : "aspect-[16/10]"}`}>
                       <Image
                         src={g.img}
                         alt={g.title}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
-                        className="object-cover object-top transition duration-500 group-hover:scale-105"
+                        sizes={g.wide ? "(max-width: 640px) 100vw, 600px" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"}
+                        className="object-cover object-left-top transition duration-500 group-hover:scale-105"
                       />
                     </div>
                     <figcaption className="px-4 py-3">
