@@ -291,7 +291,13 @@ export default function Home() {
                       />
                     </div>
                     <figcaption className="px-4 py-3">
-                      <p className="text-sm font-medium">{g.title}</p>
+                      <p className="text-sm font-medium">
+                        {g.url ? (
+                          <a href={g.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-accent">
+                            {g.title} <ArrowUpRight width={13} height={13} />
+                          </a>
+                        ) : g.title}
+                      </p>
                       <p className="text-xs text-muted">{g.kind}</p>
                     </figcaption>
                   </figure>
