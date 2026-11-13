@@ -253,18 +253,22 @@ export default function Home() {
 
             {/* Client sites */}
             <Reveal className="mt-16">
-              <h3 className="mb-5 text-xl font-semibold">WordPress client websites</h3>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-semibold">Client websites</h3>
+                <span className="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-accent">Freelance</span>
+                <span className="text-sm text-muted">WordPress · Elementor · Divi</span>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {clientSites.map((s) => (
                   <a
                     key={s.name}
                     href={s.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center justify-between rounded-xl border border-line bg-card px-5 py-4 transition hover:border-accent/50"
+                    className="group flex min-w-0 items-center justify-between gap-2 rounded-xl border border-line bg-card px-5 py-4 transition hover:border-accent/50"
                   >
                     <div>
-                      <p className="font-medium">{s.name}</p>
+                      <p className="truncate font-medium">{s.name}</p>
                       <p className="text-sm text-muted">{s.note}</p>
                     </div>
                     <ArrowUpRight className="text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
